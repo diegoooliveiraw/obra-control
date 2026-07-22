@@ -12,66 +12,115 @@
     <link rel="stylesheet" href="../css/sidebar.css">
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/forms.css">
 </head>
 
 <body>
 
     <div class="container">
-
         <aside class="sidebar">
-
             <div class="logo">
                 <h2>🏗 Obra Control</h2>
             </div>
 
             <nav class="menu">
-
                 <a href="../index.html">📊 Dashboard</a>
-
                 <a href="obras.html">🏢 Obras</a>
-
                 <a href="#">🏗 Pavimentos</a>
-
                 <a href="#">📋 Serviços</a>
-
                 <a href="#">📈 Relatórios</a>
-
                 <a href="#">⚙️ Configurações</a>
-
             </nav>
-
         </aside>
 
-
         <main class="main-content">
-
             <header class="header">
-
                 <h1>Obras</h1>
 
                 <div class="user-area">
                     Diego Oliveira
                 </div>
-
             </header>
 
-
             <section class="dashboard">
+                <div class="dashboard-header">
+                    <h2>Cadastro de Obras</h2>
 
-                <h2>Cadastro de Obras</h2>
+                    <p>
+                        Cadastre e acompanhe suas obras.
+                    </p>
+                </div>
 
-                <p>
-                    Gerencie as obras cadastradas no sistema.
-                </p>
+                <div class="form-card">
+                    <form id="obra-form">
+                        <div class="form-group">
+                            <label for="nome">
+                                Nome da Obra
+                            </label>
 
+                            <input type="text" id="nome" placeholder="Ex: Residencial Alpha">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cliente">
+                                Cliente
+                            </label>
+
+                            <input type="text" id="cliente" placeholder="Nome do cliente">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="endereco">
+                                Endereço
+                            </label>
+
+                            <input type="text" id="endereco" placeholder="Endereço da obra">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inicio">
+                                Data de início
+                            </label>
+
+                            <input type="date" id="inicio">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="previsao">
+                                Previsão de término
+                            </label>
+
+                            <input type="date" id="previsao">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="status">
+                                Status
+                            </label>
+
+                            <select id="status">
+                                <option>
+                                    Planejamento
+                                </option>
+
+                                <option>
+                                    Em andamento
+                                </option>
+
+                                <option>
+                                    Concluída
+                                </option>
+                            </select>
+                        </div>
+
+                        <button class="btn-primary">
+                            Cadastrar Obra
+                        </button>
+                    </form>
+                </div>
             </section>
-
-
         </main>
-
     </div>
-
-
 </body>
 
 </html>
