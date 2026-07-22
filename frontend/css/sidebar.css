@@ -30,3 +30,19 @@
     background-color: #2563EB;
     color: white;
 }
+
+@media(max-width:768px) {
+
+    .sidebar {
+        width: 80px;
+        padding: 16px;
+    }
+
+    .logo h2 {
+        font-size: 0;
+    }
+
+    .menu a {
+        font-size: 0;
+    }
+}

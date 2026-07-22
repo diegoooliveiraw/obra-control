@@ -29,6 +29,12 @@
     display: flex;
     flex-direction: column;
     gap: 12px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
 }
 
 .card span {
@@ -68,6 +74,7 @@
     align-items: center;
     justify-content: center;
     font-size: 12px;
+    transition: width 0.5s ease;
 }
 
 .activities ul {
@@ -78,4 +85,21 @@
 .activities li {
     padding: 12px 0;
     border-bottom: 1px solid #E5E7EB;
+}
+
+@media(max-width: 1024px) {
+
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+@media(max-width: 600px) {
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
 }
