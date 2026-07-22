@@ -9,76 +9,87 @@ const selectPavimento = document.getElementById("pavimento");
 inicializar();
 
 function inicializar() {
-
     carregarObras();
 
     selectObra.addEventListener("change", carregarPavimentos);
 
-    formulario.addEventListener("submit", function(event) {
+    formulario.addEventListener("submit", function (event) {
         event.preventDefault();
-
-        alert("Na próxima etapa faremos o salvamento do serviço.");
+        cadastrarServico();
     });
-
 }
 
 function carregarObras() {
-
     selectObra.innerHTML = "";
 
     if (obras.length === 0) {
-
         selectObra.innerHTML =
             '<option value="">Nenhuma obra cadastrada</option>';
-
         return;
-
     }
 
     const option = document.createElement("option");
     option.value = "";
     option.textContent = "Selecione uma obra";
-
     selectObra.appendChild(option);
 
-    obras.forEach(function(obra) {
-
+    obras.forEach(function (obra) {
         const item = document.createElement("option");
-
         item.value = obra.id;
         item.textContent = obra.nome;
-
         selectObra.appendChild(item);
-
     });
-
 }
 
 function carregarPavimentos() {
-
     selectPavimento.innerHTML = "";
 
     const option = document.createElement("option");
     option.value = "";
     option.textContent = "Selecione um pavimento";
-
     selectPavimento.appendChild(option);
 
     const obraSelecionada = Number(selectObra.value);
 
-    const pavimentosDaObra = pavimentos.filter(function(pavimento) {
+    const pavimentosDaObra = pavimentos.filter(function (pavimento) {
         return pavimento.obraId === obraSelecionada;
     });
 
-    pavimentosDaObra.forEach(function(pavimento) {
-
+    pavimentosDaObra.forEach(function (pavimento) {
         const item = document.createElement("option");
-
         item.value = pavimento.id;
         item.textContent = pavimento.nome;
-
         selectPavimento.appendChild(item);
-
     });
+}
 
+function cadastrarServico() {
+
+    if (
+        !selectObra.value ||
+        !selectPavimento.value ||
+        !document.getElementById("nome").value.trim()
+    ) {
+        alert("Preencha todos os campos obrigatórios.");
+        return;
+    }
+
+    const servico = {
+        id: Date.now(),
+        pavimentoId: Number(selectPavimento.value),
+        nome: document.getElementById("nome").value.trim(),
+        status: document.getElementById("status").value
+    };
+
+    servicos.push(servico);
+
+    salvarServicos();
+
+    formulario.reset();
+    selectPavimento.innerHTML =
+        '<option value="">Selecione um pavimento</option>';
+}
+
+function salvarServicos() {
+    localStorage.setItem("servicos", JSON.stringify(servicos));
 }
