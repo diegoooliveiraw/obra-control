@@ -43,3 +43,31 @@ td {
     background: #DCFCE7;
     color: #166534;
 }
+
+.tree {
+    margin-top: 16px;
+}
+
+.tree-item {
+    border: 1px solid #E5E7EB;
+    border-radius: 10px;
+    padding: 16px;
+    margin-bottom: 16px;
+    background: #FFFFFF;
+}
+
+.tree-item h4 {
+    margin-bottom: 12px;
+    color: #1F2937;
+}
+
+.tree-list {
+    list-style: none;
+    padding-left: 20px;
+    margin: 0;
+}
+
+.tree-list li {
+    padding: 8px 0;
+    color: #4B5563;
+}
