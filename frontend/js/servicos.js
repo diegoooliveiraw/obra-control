@@ -98,7 +98,6 @@ function salvarServicos() {
 }
 
 function renderizarEstrutura() {
-
     estruturaServicos.innerHTML = "";
 
     obras.forEach(function (obra) {
@@ -131,7 +130,19 @@ function renderizarEstrutura() {
 
                 const itemPavimento = document.createElement("li");
 
-                itemPavimento.innerHTML = `<strong>🏗 ${pavimento.nome}</strong>`;
+                const progressoPavimento =
+                    calcularProgressoPavimento(pavimento.id);
+
+
+                itemPavimento.innerHTML = `
+                    <strong>
+                        🏗 ${pavimento.nome}
+                    </strong>
+
+                    <span class="tree-badge">
+                        ${progressoPavimento}%
+                    </span>
+                `;
 
                 const listaServicos = document.createElement("ul");
                 listaServicos.className = "tree-list";
@@ -155,7 +166,8 @@ function renderizarEstrutura() {
 
                         itemServico.innerHTML = `
                             📋 ${servico.nome}
-                            <span class="tree-badge">
+
+                            <span class="tree-badge ${obterClasseStatus(servico.status)}">
                                 ${servico.status}
                             </span>
                         `;
@@ -178,4 +190,39 @@ function renderizarEstrutura() {
 
         estruturaServicos.appendChild(obraCard);
     });
+}
+
+function obterClasseStatus(status) {
+    if (status === "Concluído") {
+        return "status-concluido";
+    }
+
+    if (status === "Em andamento") {
+        return "status-andamento";
+    }
+
+    return "status-planejamento";
+}
+
+function calcularProgressoPavimento(pavimentoId) {
+    const servicosDoPavimento = servicos.filter(function(servico) {
+        return servico.pavimentoId === pavimentoId;
+    });
+
+
+    if (servicosDoPavimento.length === 0) {
+        return 0;
+    }
+
+
+    const concluidos = servicosDoPavimento.filter(function(servico) {
+
+        return servico.status === "Concluído";
+
+    });
+
+
+    return Math.round(
+        (concluidos.length / servicosDoPavimento.length) * 100
+    );
 }

@@ -130,3 +130,18 @@ td {
 .tree-list strong {
     color: #1F2937;
 }
+
+.status-planejamento {
+    background: #F3F4F6;
+    color: #6B7280;
+}
+
+.status-andamento {
+    background: #FEF3C7;
+    color: #92400E;
+}
+
+.status-concluido {
+    background: #DCFCE7;
+    color: #166534;
+}
