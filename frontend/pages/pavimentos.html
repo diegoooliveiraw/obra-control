@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="../css/sidebar.css">
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/forms.css">
 </head>
 
 <body>
@@ -61,17 +62,52 @@
 
             <section class="dashboard">
                 <div class="dashboard-header">
-                    <h2>
-                        Gestão de Pavimentos
-                    </h2>
+                    <h2>Cadastro de Pavimentos</h2>
+                    <p>Cadastre os pavimentos de cada obra.</p>
+                </div>
 
-                    <p>
-                        Organize os pavimentos das suas obras.
-                    </p>
+                <div class="form-card">
+                    <form id="pavimento-form">
+                        <div class="form-group">
+                            <label for="obra">Obra</label>
+
+                            <select id="obra" required>
+                                <option value="">Selecione uma obra</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="nome">Nome do Pavimento</label>
+
+                            <input type="text" id="nome" placeholder="Ex: Térreo" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="descricao">Descrição</label>
+
+                            <input type="text" id="descricao" placeholder="Descrição do pavimento">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="status">Status</label>
+
+                            <select id="status">
+                                <option>Planejamento</option>
+                                <option>Em andamento</option>
+                                <option>Concluído</option>
+                            </select>
+                        </div>
+
+                        <button class="btn-primary" type="submit">
+                            Cadastrar Pavimento
+                        </button>
+                    </form>
                 </div>
             </section>
         </main>
     </div>
+
+    <script src="../js/pavimentos.js"></script>
 </body>
 
 </html>
