@@ -1,13 +1,15 @@
-let obras = [];
+let obras = JSON.parse(localStorage.getItem("obras")) || [];
 
 const formulario = document.getElementById("obra-form");
 const tabelaObras = document.getElementById("tabela-obras");
+
+renderizarObras();
 
 formulario.addEventListener("submit", function(event) {
     event.preventDefault();
 
     const obra = {
-        id: obras.length + 1,
+        id: Date.now(),
         nome: document.getElementById("nome").value,
         cliente: document.getElementById("cliente").value,
         endereco: document.getElementById("endereco").value,
@@ -18,11 +20,21 @@ formulario.addEventListener("submit", function(event) {
 
     obras.push(obra);
 
+    salvarObras();
+
     renderizarObras();
 
     formulario.reset();
 });
 
+function salvarObras() {
+
+    localStorage.setItem(
+        "obras",
+        JSON.stringify(obras)
+    );
+
+}
 
 function renderizarObras() {
     tabelaObras.innerHTML = "";
