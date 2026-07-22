@@ -1,0 +1,11 @@
+.dashboard {
+    padding: 32px;
+}
+
+.dashboard h2 {
+    margin-bottom: 12px;
+}
+
+.dashboard p {
+    color: #6B7280;
+}

@@ -1,0 +1,18 @@
+.header {
+    height: 80px;
+    background-color: white;
+    border-bottom: 1px solid #E5E7EB;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px;
+}
+
+.header h1 {
+    font-size: 24px;
+}
+
+.user-area {
+    color: #6B7280;
+    font-size: 14px;
+}
