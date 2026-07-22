@@ -5,20 +5,30 @@ const formulario = document.getElementById("pavimento-form");
 const selectObra = document.getElementById("obra");
 const listaObras = document.getElementById("lista-obras");
 
-carregarObras();
-renderizarArvore();
+inicializar();
 
-formulario.addEventListener("submit", function (event) {
-    event.preventDefault();
+function inicializar() {
+    carregarObras();
+    renderizarArvore();
 
-    cadastrarPavimento();
-});
+    formulario.addEventListener("submit", function (event) {
+        event.preventDefault();
+        cadastrarPavimento();
+    });
+}
 
 function carregarObras() {
+    selectObra.innerHTML = "";
+
     if (obras.length === 0) {
         selectObra.innerHTML = '<option value="">Nenhuma obra cadastrada</option>';
         return;
     }
+
+    const optionPadrao = document.createElement("option");
+    optionPadrao.value = "";
+    optionPadrao.textContent = "Selecione uma obra";
+    selectObra.appendChild(optionPadrao);
 
     obras.forEach(function (obra) {
         const option = document.createElement("option");
@@ -30,17 +40,15 @@ function carregarObras() {
 }
 
 function cadastrarPavimento() {
-    if (
-        !selectObra.value ||
-        !document.getElementById("nome").value.trim()
-    ) {
+
+    if (!selectObra.value || !document.getElementById("nome").value.trim()) {
         alert("Selecione uma obra e informe o nome do pavimento.");
         return;
     }
 
     const pavimento = {
         id: Date.now(),
-        obraId: Number(document.getElementById("obra").value),
+        obraId: Number(selectObra.value),
         nome: document.getElementById("nome").value.trim(),
         descricao: document.getElementById("descricao").value.trim(),
         status: document.getElementById("status").value
@@ -49,9 +57,8 @@ function cadastrarPavimento() {
     pavimentos.push(pavimento);
 
     salvarPavimentos();
-    renderizarArvore();
 
-    console.log(pavimentos);
+    renderizarArvore();
 
     formulario.reset();
 }
@@ -60,23 +67,63 @@ function salvarPavimentos() {
     localStorage.setItem("pavimentos", JSON.stringify(pavimentos));
 }
 
+function calcularProgressoObra() {
+    return 35;
+}
+
 function renderizarArvore() {
+
     listaObras.innerHTML = "";
 
     obras.forEach(function (obra) {
 
-        const card = document.createElement("div");
-        card.className = "tree-item";
-
-        const titulo = document.createElement("h4");
-        titulo.textContent = `🏢 ${obra.nome}`;
-
-        const lista = document.createElement("ul");
-        lista.className = "tree-list";
-
         const pavimentosDaObra = pavimentos.filter(function (pavimento) {
             return pavimento.obraId === obra.id;
         });
+
+        const quantidade = pavimentosDaObra.length;
+        const progresso = calcularProgressoObra();
+
+        const card = document.createElement("div");
+        card.className = "tree-item";
+
+        card.innerHTML = `
+            <div class="tree-header">
+
+                <div class="tree-info">
+                    <h4>🏢 ${obra.nome}</h4>
+
+                    <span class="tree-badge">
+                        ${quantidade} pavimento(s)
+                    </span>
+
+                    <small>Status: Em andamento</small>
+                </div>
+
+                <div class="progress-container">
+
+                    <div class="progress-text">
+                        Progresso Geral
+                    </div>
+
+                    <div class="progress-bar">
+                        <div
+                            class="progress-fill"
+                            style="width: ${progresso}%;">
+                        </div>
+                    </div>
+
+                    <div class="progress-text">
+                        ${progresso}%
+                    </div>
+
+                </div>
+
+            </div>
+        `;
+
+        const lista = document.createElement("ul");
+        lista.className = "tree-list";
 
         if (pavimentosDaObra.length === 0) {
 
@@ -91,8 +138,12 @@ function renderizarArvore() {
 
                 const item = document.createElement("li");
 
-                item.textContent =
-                    `🏗 ${pavimento.nome} • ${pavimento.status}`;
+                item.innerHTML = `
+                    🏗 ${pavimento.nome}
+                    <span class="tree-badge">
+                        ${pavimento.status}
+                    </span>
+                `;
 
                 lista.appendChild(item);
 
@@ -100,7 +151,6 @@ function renderizarArvore() {
 
         }
 
-        card.appendChild(titulo);
         card.appendChild(lista);
 
         listaObras.appendChild(card);
