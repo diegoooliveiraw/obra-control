@@ -5,11 +5,13 @@ let servicos = JSON.parse(localStorage.getItem("servicos")) || [];
 const formulario = document.getElementById("servico-form");
 const selectObra = document.getElementById("obra");
 const selectPavimento = document.getElementById("pavimento");
+const estruturaServicos = document.getElementById("estrutura-servicos");
 
 inicializar();
 
 function inicializar() {
     carregarObras();
+    renderizarEstrutura();
 
     selectObra.addEventListener("change", carregarPavimentos);
 
@@ -84,6 +86,7 @@ function cadastrarServico() {
     servicos.push(servico);
 
     salvarServicos();
+    renderizarEstrutura();
 
     formulario.reset();
     selectPavimento.innerHTML =
@@ -92,4 +95,87 @@ function cadastrarServico() {
 
 function salvarServicos() {
     localStorage.setItem("servicos", JSON.stringify(servicos));
+}
+
+function renderizarEstrutura() {
+
+    estruturaServicos.innerHTML = "";
+
+    obras.forEach(function (obra) {
+
+        const obraCard = document.createElement("div");
+        obraCard.className = "tree-item";
+
+        const tituloObra = document.createElement("h4");
+        tituloObra.textContent = `🏢 ${obra.nome}`;
+
+        obraCard.appendChild(tituloObra);
+
+        const listaPavimentos = document.createElement("ul");
+        listaPavimentos.className = "tree-list";
+
+        const pavimentosDaObra = pavimentos.filter(function (pavimento) {
+            return pavimento.obraId === obra.id;
+        });
+
+        if (pavimentosDaObra.length === 0) {
+
+            const item = document.createElement("li");
+            item.textContent = "Nenhum pavimento cadastrado.";
+
+            listaPavimentos.appendChild(item);
+
+        } else {
+
+            pavimentosDaObra.forEach(function (pavimento) {
+
+                const itemPavimento = document.createElement("li");
+
+                itemPavimento.innerHTML = `<strong>🏗 ${pavimento.nome}</strong>`;
+
+                const listaServicos = document.createElement("ul");
+                listaServicos.className = "tree-list";
+
+                const servicosDoPavimento = servicos.filter(function (servico) {
+                    return servico.pavimentoId === pavimento.id;
+                });
+
+                if (servicosDoPavimento.length === 0) {
+
+                    const item = document.createElement("li");
+                    item.textContent = "Nenhum serviço cadastrado.";
+
+                    listaServicos.appendChild(item);
+
+                } else {
+
+                    servicosDoPavimento.forEach(function (servico) {
+
+                        const itemServico = document.createElement("li");
+
+                        itemServico.innerHTML = `
+                            📋 ${servico.nome}
+                            <span class="tree-badge">
+                                ${servico.status}
+                            </span>
+                        `;
+
+                        listaServicos.appendChild(itemServico);
+
+                    });
+
+                }
+
+                itemPavimento.appendChild(listaServicos);
+
+                listaPavimentos.appendChild(itemPavimento);
+
+            });
+
+        }
+
+        obraCard.appendChild(listaPavimentos);
+
+        estruturaServicos.appendChild(obraCard);
+    });
 }

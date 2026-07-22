@@ -119,3 +119,14 @@ td {
     font-size: 13px;
     color: #6B7280;
 }
+
+.tree-list .tree-list {
+    margin-top: 8px;
+    margin-left: 20px;
+    border-left: 2px solid #E5E7EB;
+    padding-left: 16px;
+}
+
+.tree-list strong {
+    color: #1F2937;
+}
