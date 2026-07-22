@@ -1,0 +1,18 @@
+# Java
+*.class
+*.jar
+*.war
+target/
+
+# VS Code
+.vscode/
+
+# IntelliJ
+.idea/
+
+# Sistema Operacional
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
