@@ -1,5 +1,6 @@
 let obras = JSON.parse(localStorage.getItem("obras")) || [];
 let pavimentos = JSON.parse(localStorage.getItem("pavimentos")) || [];
+let servicos = JSON.parse(localStorage.getItem("servicos")) || [];
 
 const formulario = document.getElementById("pavimento-form");
 const selectObra = document.getElementById("obra");
@@ -50,8 +51,7 @@ function cadastrarPavimento() {
         id: Date.now(),
         obraId: Number(selectObra.value),
         nome: document.getElementById("nome").value.trim(),
-        descricao: document.getElementById("descricao").value.trim(),
-        status: document.getElementById("status").value
+        descricao: document.getElementById("descricao").value.trim()
     };
 
     pavimentos.push(pavimento);
@@ -67,8 +67,46 @@ function salvarPavimentos() {
     localStorage.setItem("pavimentos", JSON.stringify(pavimentos));
 }
 
-function calcularProgressoObra() {
-    return 35;
+function calcularProgressoPavimento(pavimentoId) {
+    const servicosDoPavimento = servicos.filter(function (servico) {
+        return servico.pavimentoId === pavimentoId;
+    });
+
+    if (servicosDoPavimento.length === 0) {
+        return 0;
+    }
+
+    let somaProgresso = 0;
+
+    servicosDoPavimento.forEach(function (servico) {
+        somaProgresso += servico.progresso;
+    });
+
+    return Math.round(
+        somaProgresso / servicosDoPavimento.length
+    );
+}
+
+function calcularProgressoObra(obraId) {
+    const pavimentosDaObra = pavimentos.filter(function (pavimento) {
+        return pavimento.obraId === obraId;
+    });
+
+    if (pavimentosDaObra.length === 0) {
+        return 0;
+    }
+
+    let somaProgresso = 0;
+
+    pavimentosDaObra.forEach(function (pavimento) {
+        somaProgresso += calcularProgressoPavimento(
+            pavimento.id
+        );
+    });
+
+    return Math.round(
+        somaProgresso / pavimentosDaObra.length
+    );
 }
 
 function renderizarArvore() {
@@ -82,7 +120,10 @@ function renderizarArvore() {
         });
 
         const quantidade = pavimentosDaObra.length;
-        const progresso = calcularProgressoObra();
+        
+        const progresso = calcularProgressoObra(
+            obra.id
+        );
 
         const card = document.createElement("div");
         card.className = "tree-item";
@@ -135,20 +176,31 @@ function renderizarArvore() {
         } else {
 
             pavimentosDaObra.forEach(function (pavimento) {
-
                 const item = document.createElement("li");
+
+                const progresso = calcularProgressoPavimento(
+                    pavimento.id
+                );
+
+                const status = obterStatusProgresso(
+                    progresso
+                );
 
                 item.innerHTML = `
                     🏗 ${pavimento.nome}
+
                     <span class="tree-badge">
-                        ${pavimento.status}
+                        ${progresso}%
+                    </span>
+
+                    <span class="tree-badge ${status.classe}">
+                        ${status.icone}
+                        ${status.texto}
                     </span>
                 `;
 
                 lista.appendChild(item);
-
             });
-
         }
 
         card.appendChild(lista);

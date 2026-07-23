@@ -67,6 +67,7 @@
 }
 
 .progress-fill {
+    width: 0%;
     height: 100%;
     background: #2563EB;
     color: #FFFFFF;
