@@ -114,7 +114,11 @@ function renderizarEstrutura() {
         const obraCard = document.createElement("div");
         obraCard.className = "tree-item";
 
-        const progressoObra = calcularProgressoObra(obra.id);
+        const progressoObra = calcularProgressoObra(
+            obra.id,
+            pavimentos,
+            servicos
+        );
 
         const statusObra = obterStatusProgresso(
             progressoObra
@@ -171,7 +175,10 @@ function renderizarEstrutura() {
                 const itemPavimento = document.createElement("li");
 
                 const progressoPavimento =
-                    calcularProgressoPavimento(pavimento.id);
+                    calcularProgressoPavimento(
+                        pavimento.id,
+                        servicos
+                    );
 
 
                 itemPavimento.innerHTML = `
@@ -235,46 +242,4 @@ function renderizarEstrutura() {
 
         estruturaServicos.appendChild(obraCard);
     });
-}
-
-function calcularProgressoPavimento(pavimentoId) {
-    const servicosDoPavimento = servicos.filter(function(servico) {
-        return servico.pavimentoId === pavimentoId;
-    });
-
-    if (servicosDoPavimento.length === 0) {
-        return 0;
-    }
-
-    let somaProgresso = 0;
-
-    servicosDoPavimento.forEach(function(servico) {
-        somaProgresso += servico.progresso;
-    });
-
-    return Math.round(
-        somaProgresso / servicosDoPavimento.length
-    );
-}
-
-function calcularProgressoObra(obraId) {
-    const pavimentosDaObra = pavimentos.filter(function (pavimento) {
-        return pavimento.obraId === obraId;
-    });
-
-    if (pavimentosDaObra.length === 0) {
-        return 0;
-    }
-
-    let somaProgresso = 0;
-
-    pavimentosDaObra.forEach(function (pavimento) {
-        somaProgresso  += calcularProgressoPavimento(
-            pavimento.id
-        );
-    });
-
-    return Math.round(
-        somaProgresso  / pavimentosDaObra.length
-    );
 }

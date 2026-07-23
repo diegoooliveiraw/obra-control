@@ -29,7 +29,7 @@ function atualizarIndicadores() {
 
     totalConcluidos.textContent = concluidos.length;
 
-    const progresso = calcularProgressoGeral();
+    const progresso = calcularProgressoDashboard();
 
     const status = obterStatusProgresso(progresso);
 
@@ -45,36 +45,22 @@ function atualizarIndicadores() {
     `;
 }
 
-function calcularProgressoGeral() {
-    if (pavimentos.length === 0) {
+function calcularProgressoDashboard() {
+    if (obras.length === 0) {
         return 0;
     }
 
     let soma = 0;
 
-    pavimentos.forEach(function (pavimento) {
-        const servicosDoPavimento = servicos.filter(function (servico) {
-            return servico.pavimentoId === pavimento.id;
-        });
-
-        if (servicosDoPavimento.length === 0) {
-            return;
-        }
-
-        let progressoPavimento = 0;
-
-        servicosDoPavimento.forEach(function (servico) {
-            progressoPavimento += servico.progresso;
-        });
-
-        progressoPavimento =
-            progressoPavimento /
-            servicosDoPavimento.length;
-
-        soma += progressoPavimento;
+    obras.forEach(function (obra) {
+        soma += calcularProgressoObra(
+            obra.id,
+            pavimentos,
+            servicos
+        );
     });
 
     return Math.round(
-        soma / pavimentos.length
+        soma / obras.length
     );
 }
