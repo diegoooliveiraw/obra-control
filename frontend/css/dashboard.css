@@ -66,8 +66,7 @@
     overflow: hidden;
 }
 
-.progress {
-    width: 65%;
+.progress-fill {
     height: 100%;
     background: #2563EB;
     color: #FFFFFF;
@@ -89,17 +88,13 @@
 }
 
 @media (max-width: 1024px) {
-
-    .cards {
+    .dashboard-grid {
         grid-template-columns: repeat(2, 1fr);
     }
-
 }
 
 @media (max-width: 600px) {
-
-    .cards {
+    .dashboard-grid {
         grid-template-columns: 1fr;
     }
-
 }

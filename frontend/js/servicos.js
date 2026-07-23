@@ -105,10 +105,32 @@ function renderizarEstrutura() {
         const obraCard = document.createElement("div");
         obraCard.className = "tree-item";
 
+        const progressoObra = calcularProgressoObra(obra.id);
+
         const tituloObra = document.createElement("h4");
-        tituloObra.textContent = `🏢 ${obra.nome}`;
+
+        tituloObra.innerHTML = `
+            🏢 ${obra.nome}
+
+            <span class="tree-badge">
+                ${progressoObra}%
+            </span>
+        `;
 
         obraCard.appendChild(tituloObra);
+
+        const barra = document.createElement("div");
+
+        barra.className = "progress-bar";
+
+        barra.innerHTML = `
+            <div
+                class="progress-fill"
+                style="width: ${progressoObra}%;">
+            </div>
+        `;
+
+        obraCard.appendChild(barra);
 
         const listaPavimentos = document.createElement("ul");
         listaPavimentos.className = "tree-list";
@@ -225,4 +247,22 @@ function calcularProgressoPavimento(pavimentoId) {
     return Math.round(
         (concluidos.length / servicosDoPavimento.length) * 100
     );
+}
+
+function calcularProgressoObra(obraId) {
+    const pavimentosDaObra = pavimentos.filter(function (pavimento) {
+        return pavimento.obraId === obraId;
+    });
+
+    if (pavimentosDaObra.length === 0) {
+        return 0;
+    }
+
+    let soma = 0;
+
+    pavimentosDaObra.forEach(function (pavimento) {
+        soma += calcularProgressoPavimento(pavimento.id);
+    });
+
+    return Math.round(soma / pavimentosDaObra.length);
 }
