@@ -70,7 +70,8 @@ function cadastrarServico() {
     if (
         !selectObra.value ||
         !selectPavimento.value ||
-        !document.getElementById("nome").value.trim()
+        !document.getElementById("nome").value.trim() ||
+        !document.getElementById("progresso").value
     ) {
         alert("Preencha todos os campos obrigatórios.");
         return;
@@ -80,17 +81,25 @@ function cadastrarServico() {
         id: Date.now(),
         pavimentoId: Number(selectPavimento.value),
         nome: document.getElementById("nome").value.trim(),
-        status: document.getElementById("status").value
+        progresso: Number(
+            document.getElementById("progresso").value
+        )
     };
 
     servicos.push(servico);
 
     salvarServicos();
+    
     renderizarEstrutura();
 
     formulario.reset();
+
     selectPavimento.innerHTML =
         '<option value="">Selecione um pavimento</option>';
+
+    selectObra.value = "";
+
+    alert("Serviço cadastrado com sucesso!");
 }
 
 function salvarServicos() {
@@ -107,6 +116,10 @@ function renderizarEstrutura() {
 
         const progressoObra = calcularProgressoObra(obra.id);
 
+        const statusObra = obterStatusProgresso(
+            progressoObra
+        );
+
         const tituloObra = document.createElement("h4");
 
         tituloObra.innerHTML = `
@@ -114,6 +127,11 @@ function renderizarEstrutura() {
 
             <span class="tree-badge">
                 ${progressoObra}%
+            </span>
+
+            <span class="tree-badge ${statusObra.classe}">
+                ${statusObra.icone}
+                ${statusObra.texto}
             </span>
         `;
 
@@ -183,19 +201,24 @@ function renderizarEstrutura() {
                 } else {
 
                     servicosDoPavimento.forEach(function (servico) {
-
                         const itemServico = document.createElement("li");
+
+                        const statusServico = obterStatusProgresso(servico.progresso);
 
                         itemServico.innerHTML = `
                             📋 ${servico.nome}
+                            
+                            <span class="tree-badge">
+                                ${servico.progresso}%
+                            </span>
 
-                            <span class="tree-badge ${obterClasseStatus(servico.status)}">
-                                ${servico.status}
+                            <span class="tree-badge ${statusServico.classe}">
+                                ${statusServico.icone}
+                                ${statusServico.texto}
                             </span>
                         `;
 
                         listaServicos.appendChild(itemServico);
-
                     });
 
                 }
@@ -214,38 +237,23 @@ function renderizarEstrutura() {
     });
 }
 
-function obterClasseStatus(status) {
-    if (status === "Concluído") {
-        return "status-concluido";
-    }
-
-    if (status === "Em andamento") {
-        return "status-andamento";
-    }
-
-    return "status-planejamento";
-}
-
 function calcularProgressoPavimento(pavimentoId) {
     const servicosDoPavimento = servicos.filter(function(servico) {
         return servico.pavimentoId === pavimentoId;
     });
 
-
     if (servicosDoPavimento.length === 0) {
         return 0;
     }
 
+    let somaProgresso = 0;
 
-    const concluidos = servicosDoPavimento.filter(function(servico) {
-
-        return servico.status === "Concluído";
-
+    servicosDoPavimento.forEach(function(servico) {
+        somaProgresso += servico.progresso;
     });
 
-
     return Math.round(
-        (concluidos.length / servicosDoPavimento.length) * 100
+        somaProgresso / servicosDoPavimento.length
     );
 }
 
@@ -258,11 +266,15 @@ function calcularProgressoObra(obraId) {
         return 0;
     }
 
-    let soma = 0;
+    let somaProgresso = 0;
 
     pavimentosDaObra.forEach(function (pavimento) {
-        soma += calcularProgressoPavimento(pavimento.id);
+        somaProgresso  += calcularProgressoPavimento(
+            pavimento.id
+        );
     });
 
-    return Math.round(soma / pavimentosDaObra.length);
+    return Math.round(
+        somaProgresso  / pavimentosDaObra.length
+    );
 }

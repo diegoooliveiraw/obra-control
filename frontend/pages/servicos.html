@@ -68,13 +68,15 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="status">Status</label>
+                            <label for="progresso">Progresso (%)</label>
 
-                            <select id="status">
-                                <option>Planejamento</option>
-                                <option>Em andamento</option>
-                                <option>Concluído</option>
-                            </select>
+                            <input
+                                type="number"
+                                id="progresso"
+                                min="0"
+                                max="100"
+                                value="0"
+                                required>
                         </div>
 
                         <button class="btn-primary" type="submit">
@@ -92,6 +94,7 @@
         </main>
     </div>
 
+    <script src="../js/utils.js"></script>
     <script src="../js/servicos.js"></script>
 </body>
 
