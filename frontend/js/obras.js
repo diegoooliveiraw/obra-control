@@ -5,7 +5,7 @@ const tabelaObras = document.getElementById("tabela-obras");
 
 renderizarObras();
 
-formulario.addEventListener("submit", function(event) {
+formulario.addEventListener("submit", function (event) {
     event.preventDefault();
 
     const obra = {
@@ -39,7 +39,7 @@ function salvarObras() {
 function renderizarObras() {
     tabelaObras.innerHTML = "";
 
-    obras.forEach(function(obra) {
+    obras.forEach(function (obra) {
 
         const linha = document.createElement("tr");
 
@@ -52,6 +52,14 @@ function renderizarObras() {
                 <span class="status">
                     ${obra.status}
                 </span>
+            </td>
+
+            <td>
+                <a 
+                    href="detalhes-obra.html?id=${obra.id}"
+                    class="btn-primary">
+                    Ver detalhes
+                </a>
             </td>
         `;
 
