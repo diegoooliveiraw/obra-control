@@ -6,6 +6,8 @@ const totalObras = document.getElementById("total-obras");
 const totalPavimentos = document.getElementById("total-pavimentos");
 const totalServicos = document.getElementById("total-servicos");
 const totalConcluidos = document.getElementById("total-concluidos");
+const totalAndamento = document.getElementById("total-andamento");
+const totalPlanejamento = document.getElementById("total-planejamento");
 const progressoGeral = document.querySelector(".progress-fill");
 const statusGeral = document.getElementById("status-geral");
 
@@ -23,11 +25,17 @@ function atualizarIndicadores() {
 
     totalServicos.textContent = servicos.length;
 
-    const concluidos = servicos.filter(function (servico) {
-        return servico.progresso === 100;
-    });
+    const indicadores =
+        calcularIndicadoresServicos(servicos);
 
-    totalConcluidos.textContent = concluidos.length;
+    totalConcluidos.textContent =
+        indicadores.concluidos;
+
+    totalAndamento.textContent =
+        indicadores.andamento;
+
+    totalPlanejamento.textContent =
+        indicadores.planejamento;
 
     const progresso = calcularProgressoDashboard();
 

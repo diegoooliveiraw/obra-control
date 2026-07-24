@@ -59,3 +59,28 @@ function calcularProgressoObra(obraId, pavimentos, servicos) {
 
     return Math.round(soma / pavimentosDaObra.length);
 }
+
+function calcularIndicadoresServicos(servicos) {
+    const indicadores = {
+        total: servicos.length,
+        concluidos: 0,
+        andamento: 0,
+        planejamento: 0
+    };
+
+    servicos.forEach(function (servico) {
+        if (servico.progresso === 100) {
+            indicadores.concluidos++;
+        }
+
+        else if (servico.progresso === 0) {
+            indicadores.planejamento++;
+        }
+
+        else {
+            indicadores.andamento++;
+        }
+    });
+
+    return indicadores;
+}
