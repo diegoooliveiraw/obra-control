@@ -296,27 +296,27 @@ function carregarBreadcrumb() {
                 📊 Dashboard
             </a>
 
-            <span>
-                >
+            <span class="breadcrumb-separator">
+                ›
             </span>
 
             <a href="obras.html">
                 🏢 Obras
             </a>
 
-            <span>
-                >
+            <span class="breadcrumb-separator">
+                ›
             </span>
 
             <strong>
                 🏢 ${obra.nome}
             </strong>
 
-            <span>
-                >
+            <span class="breadcrumb-separator">
+                ›
             </span>
 
-            <strong>
+            <strong class="breadcrumb-current">
                 📋 Serviços
             </strong>
         </div>

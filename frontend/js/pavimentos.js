@@ -295,28 +295,28 @@ function renderizarBreadcrumb(){
                 Dashboard
             </a>
 
-            <span>
-                >
+            <span class="breadcrumb-separator">
+                ›
             </span>
 
             <a href="obras.html">
                 Obras
             </a>
 
-            <span>
-                >
+            <span class="breadcrumb-separator">
+                ›
             </span>
 
             <strong>
                 ${obra.nome}
             </strong>
 
-            <span>
-                >
+            <span class="breadcrumb-separator">
+                ›
             </span>
 
-            <strong>
-                Pavimentos
+            <strong class="breadcrumb-current">
+                🏗 Pavimentos
             </strong>
         </div>
     `;

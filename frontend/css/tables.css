@@ -76,6 +76,7 @@ td {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+    flex-wrap:wrap;
     gap: 16px;
     margin-bottom: 16px;
 }
@@ -98,6 +99,7 @@ td {
 
 .progress-container {
     width: 220px;
+    max-width:100%;
 }
 
 .progress-bar {
@@ -162,4 +164,29 @@ td {
 .btn-view:hover {
     background:#1D4ED8;
     transform:translateY(-2px);
+}
+
+@media(max-width:600px){
+    .tree-list{
+        padding-left:10px;
+    }
+
+    .tree-list .tree-list{
+        margin-left:10px;
+        padding-left:10px;
+    }
+
+    .tree-item{
+        padding:12px;
+    }
+}
+
+@media(max-width:600px){
+    .table-card{
+        padding:16px;
+    }
+
+    .tree-header h4{
+        font-size:16px;
+    }
 }

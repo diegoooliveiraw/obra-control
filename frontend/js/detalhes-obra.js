@@ -262,22 +262,22 @@ function renderizarBreadcrumb(obra){
     breadcrumb.innerHTML = `
         <div class="breadcrumb">
             <a href="../index.html">
-                Dashboard
+                📊 Dashboard
             </a>
 
-            <span>
-                >
+            <span class="breadcrumb-separator">
+                ›
             </span>
 
             <a href="obras.html">
-                Obras
+                🏢 Obras
             </a>
 
-            <span>
-                >
+            <span class="breadcrumb-separator">
+                ›
             </span>
 
-            <strong>
+            <strong class="breadcrumb-current">
                 ${obra.nome}
             </strong>
         </div>
