@@ -136,6 +136,22 @@ function carregarDetalhes(obraId) {
                 </div>
             </div>
 
+            <div class="details-actions">
+                <a 
+                    class="btn-view"
+                    href="pavimentos.html?obra=${obra.id}">
+
+                    🏗 Ver Pavimentos
+                </a>
+
+                <a 
+                    class="btn-view"
+                    href="servicos.html?obra=${obra.id}">
+
+                    📋 Ver Serviços
+                </a>
+            </div>
+
             <div id="historico">
 
             </div>

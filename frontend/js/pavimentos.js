@@ -2,6 +2,16 @@ let obras = JSON.parse(localStorage.getItem("obras")) || [];
 let pavimentos = JSON.parse(localStorage.getItem("pavimentos")) || [];
 let servicos = JSON.parse(localStorage.getItem("servicos")) || [];
 
+const parametros =
+    new URLSearchParams(
+        window.location.search
+    );
+
+const obraSelecionada =
+    Number(
+        parametros.get("obra")
+    );
+
 const formulario = document.getElementById("pavimento-form");
 const selectObra = document.getElementById("obra");
 const listaObras = document.getElementById("lista-obras");
@@ -71,7 +81,15 @@ function renderizarArvore() {
 
     listaObras.innerHTML = "";
 
-    obras.forEach(function (obra) {
+    const obrasExibidas =
+        obraSelecionada
+        ? obras.filter(function(obra){
+
+            return obra.id === obraSelecionada;
+        })
+        : obras;
+
+    obrasExibidas.forEach(function (obra) {
 
         const pavimentosDaObra = pavimentos.filter(function (pavimento) {
             return pavimento.obraId === obra.id;

@@ -167,6 +167,16 @@
     color: #6B7280;
 }
 
+.details-actions {
+    display:flex;
+    gap:16px;
+    margin-top:24px;
+}
+
+.details-actions .btn-view {
+    text-decoration:none;
+}
+
 /*
     RESPONSIVIDADE
 */

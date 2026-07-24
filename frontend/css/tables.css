@@ -145,3 +145,21 @@ td {
     background: #DCFCE7;
     color: #166534;
 }
+
+.btn-view {
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    padding:8px 14px;
+    background:#2563EB;
+    color:white;
+    border-radius:8px;
+    text-decoration:none;
+    font-size:14px;
+    transition:.2s;
+}
+
+.btn-view:hover {
+    background:#1D4ED8;
+    transform:translateY(-2px);
+}

@@ -56,9 +56,10 @@ function renderizarObras() {
 
             <td>
                 <a 
-                    href="detalhes-obra.html?id=${obra.id}"
-                    class="btn-primary">
-                    Ver detalhes
+                    class="btn-view"
+                    href="detalhes-obra.html?id=${obra.id}">
+
+                    👁 Ver detalhes
                 </a>
             </td>
         `;
