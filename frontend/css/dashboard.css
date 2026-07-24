@@ -40,7 +40,8 @@
     flex-direction:column;
     gap:12px;
 
-    box-shadow:0 2px 10px rgba(0,0,0,.04);
+    box-shadow:
+        0 2px 8px rgba(15,23,42,.04);
 
     transition:
         transform .25s ease,
@@ -48,10 +49,11 @@
 }
 
 .dashboard-card:hover{
-    transform:translateY(-4px);
+    transform:
+        translateY(-4px);
 
     box-shadow:
-        0 14px 30px rgba(0,0,0,.08);
+        0 14px 30px rgba(15,23,42,.08);
 }
 
 .dashboard-card h3 {
@@ -75,8 +77,9 @@
     border:1px solid #E5E7EB;
     border-radius:16px;
     padding:24px;
+
     box-shadow:
-        0 2px 10px rgba(0,0,0,.04);
+        0 2px 8px rgba(15,23,42,.04);
 }
 
 .progress-bar {
@@ -124,13 +127,18 @@
     border-radius: 14px;
     padding: 20px;
     margin-top: 18px;
-    box-shadow: 0 2px 10px rgba(0,0,0,.05);
+
+    box-shadow:
+        0 2px 8px rgba(15,23,42,.04);
     transition: .25s;
 }
 
 .pavimento-card:hover{
-    transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(0,0,0,.08);
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 10px 25px rgba(15,23,42,.08);
 }
 
 .pavimento-header {
@@ -207,8 +215,11 @@
 }
 
 .indicador-card:hover {
-    transform:translateY(-3px);
-    box-shadow: 0 8px 18px rgba(0,0,0,.08);
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 8px 18px rgba(15,23,42,.08);
 }
 
 .indicador-card span {

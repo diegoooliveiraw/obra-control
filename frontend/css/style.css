@@ -143,21 +143,48 @@ DESIGN SYSTEM — ÍCONE DOS BOTÕES
 
 /*
 ====================================
-DESIGN SYSTEM — SOMBRAS
+DESIGN SYSTEM — ELEVAÇÃO
 ====================================
 */
 
 .shadow-sm {
     box-shadow:
-        0 2px 8px rgba(15, 23, 42, .04);
+        0 2px 8px rgba(15,23,42,.04);
 }
 
 .shadow-md {
     box-shadow:
-        0 8px 24px rgba(15, 23, 42, .08);
+        0 8px 24px rgba(15,23,42,.08);
 }
 
 .shadow-lg {
     box-shadow:
-        0 16px 40px rgba(15, 23, 42, .12);
+        0 16px 40px rgba(15,23,42,.12);
+}
+
+.shadow-hover {
+    transition:
+        box-shadow .25s ease,
+        transform .25s ease;
+}
+
+.shadow-hover:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 12px 30px rgba(15,23,42,.10);
+}
+
+.card-hover {
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+}
+
+.card-hover:hover {
+    transform:
+        translateY(-4px);
+
+    box-shadow:
+        0 14px 30px rgba(15,23,42,.08);
 }
