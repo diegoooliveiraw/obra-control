@@ -9,7 +9,7 @@ const parametros =
 
 const obraSelecionada =
     Number(
-        parametros.get("obra")
+        parametros.get("obraID")
     );
 
 const breadcrumb = document.getElementById("breadcrumb");

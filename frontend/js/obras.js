@@ -56,7 +56,7 @@ function renderizarObras() {
 
             <td>
                 <a 
-                    href="detalhes-obra.html?id=${obra.id}"
+                    href="detalhes-obra.html?obraId=${obra.id}"
                     class="btn-view btn-sm">
 
                     <span class="btn-icon">

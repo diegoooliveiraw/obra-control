@@ -15,7 +15,7 @@ function inicializar() {
 
     const obraId =
         Number(
-            parametros.get("id")
+            parametros.get("obraId")
         );
 
     carregarDetalhes(obraId);
@@ -152,14 +152,14 @@ function carregarDetalhes(obraId) {
 
                 <a 
                     class="btn-secondary"
-                    href="pavimentos.html?obra=${obra.id}">
+                    href="pavimentos.html?obraId=${obra.id}">
 
                     🏗 Ver Pavimentos
                 </a>
 
                 <a 
                     class="btn-secondary"
-                    href="servicos.html?obra=${obra.id}">
+                    href="servicos.html?obraId=${obra.id}">
 
                     📋 Ver Serviços
                 </a>
