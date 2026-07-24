@@ -206,6 +206,29 @@
     border-left: 4px solid #9CA3AF;
 }
 
+.breadcrumb {
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:24px;
+    font-size:14px;
+    color:#6B7280;
+}
+
+.breadcrumb a {
+    text-decoration:none;
+    color:#2563EB;
+}
+
+.breadcrumb strong {
+    color:#111827;
+    font-weight:600;
+}
+
+.breadcrumb span {
+    color:#9CA3AF;
+}
+
 @media (max-width: 1024px) {
     .dashboard-grid {
         grid-template-columns: repeat(2, 1fr);

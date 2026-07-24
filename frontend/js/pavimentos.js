@@ -12,6 +12,7 @@ const obraSelecionada =
         parametros.get("obra")
     );
 
+const breadcrumb = document.getElementById("breadcrumb");
 const formulario = document.getElementById("pavimento-form");
 const selectObra = document.getElementById("obra");
 const listaObras = document.getElementById("lista-obras");
@@ -20,6 +21,7 @@ inicializar();
 
 function inicializar() {
     carregarObras();
+    renderizarBreadcrumb();
     renderizarArvore();
 
     formulario.addEventListener("submit", function (event) {
@@ -270,4 +272,52 @@ function renderizarArvore() {
 
         listaObras.appendChild(card);
     });
+}
+
+function renderizarBreadcrumb(){
+    if(!obraSelecionada){
+        return;
+    }
+
+    const obra =
+        obras.find(function(item){
+
+            return item.id === obraSelecionada;
+        });
+
+    if(!obra){
+        return;
+    }
+
+    breadcrumb.innerHTML = `
+        <div class="breadcrumb">
+            <a href="../index.html">
+                Dashboard
+            </a>
+
+            <span>
+                >
+            </span>
+
+            <a href="obras.html">
+                Obras
+            </a>
+
+            <span>
+                >
+            </span>
+
+            <strong>
+                ${obra.nome}
+            </strong>
+
+            <span>
+                >
+            </span>
+
+            <strong>
+                Pavimentos
+            </strong>
+        </div>
+    `;
 }

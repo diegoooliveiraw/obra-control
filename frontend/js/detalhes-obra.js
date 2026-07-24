@@ -1,9 +1,8 @@
 const obras = JSON.parse(localStorage.getItem("obras")) || [];
-
 const pavimentos = JSON.parse(localStorage.getItem("pavimentos")) || [];
-
 const servicos = JSON.parse(localStorage.getItem("servicos")) || [];
 
+const breadcrumb = document.getElementById("breadcrumb");
 const container = document.getElementById("detalhes-obra");
 
 inicializar();
@@ -38,6 +37,8 @@ function carregarDetalhes(obraId) {
         return;
     }
 
+    renderizarBreadcrumb(obra);
+
     const progresso =
         calcularProgressoObra(
             obra.id,
@@ -68,6 +69,8 @@ function carregarDetalhes(obraId) {
         }).length;
 
     container.innerHTML = `
+        
+
         <div class="details-card">
             <h2>
                 🏢 ${obra.nome}
@@ -138,14 +141,21 @@ function carregarDetalhes(obraId) {
 
             <div class="details-actions">
                 <a 
-                    class="btn-view"
+                    class="btn-secondary"
+                    href="obras.html">
+
+                    ← Voltar para Obras
+                </a>
+
+                <a 
+                    class="btn-secondary"
                     href="pavimentos.html?obra=${obra.id}">
 
                     🏗 Ver Pavimentos
                 </a>
 
                 <a 
-                    class="btn-view"
+                    class="btn-secondary"
                     href="servicos.html?obra=${obra.id}">
 
                     📋 Ver Serviços
@@ -246,4 +256,30 @@ function carregarHistorico(obraId) {
     `;
 
     area.innerHTML = html;
+}
+
+function renderizarBreadcrumb(obra){
+    breadcrumb.innerHTML = `
+        <div class="breadcrumb">
+            <a href="../index.html">
+                Dashboard
+            </a>
+
+            <span>
+                >
+            </span>
+
+            <a href="obras.html">
+                Obras
+            </a>
+
+            <span>
+                >
+            </span>
+
+            <strong>
+                ${obra.nome}
+            </strong>
+        </div>
+    `;
 }

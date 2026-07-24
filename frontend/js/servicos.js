@@ -12,6 +12,7 @@ const obraSelecionada =
         parametros.get("obra")
     );
 
+const breadcrumb = document.getElementById("breadcrumb");
 const formulario = document.getElementById("servico-form");
 const selectObra = document.getElementById("obra");
 const selectPavimento = document.getElementById("pavimento");
@@ -20,15 +21,17 @@ const estruturaServicos = document.getElementById("estrutura-servicos");
 inicializar();
 
 function inicializar() {
+    carregarBreadcrumb();
     carregarObras();
     renderizarEstrutura();
 
-    selectObra.addEventListener("change", carregarPavimentos);
+    selectObra.addEventListener("change",carregarPavimentos);
 
     formulario.addEventListener("submit", function (event) {
-        event.preventDefault();
-        cadastrarServico();
-    });
+            event.preventDefault();
+            cadastrarServico();
+        }
+    );
 }
 
 function carregarObras() {
@@ -260,4 +263,62 @@ function renderizarEstrutura() {
 
         estruturaServicos.appendChild(obraCard);
     });
+}
+
+function carregarBreadcrumb() {
+    const parametros =
+        new URLSearchParams(
+            window.location.search
+        );
+
+    const obraId =
+        Number(
+            parametros.get("obra")
+        );
+
+    if(!obraId){
+        return;
+    }
+
+    const obra =
+        obras.find(function(item){
+
+            return item.id === obraId;
+        });
+
+    if(!obra){
+        return;
+    }
+
+    breadcrumb.innerHTML = `
+        <div class="breadcrumb">
+            <a href="../index.html">
+                📊 Dashboard
+            </a>
+
+            <span>
+                >
+            </span>
+
+            <a href="obras.html">
+                🏢 Obras
+            </a>
+
+            <span>
+                >
+            </span>
+
+            <strong>
+                🏢 ${obra.nome}
+            </strong>
+
+            <span>
+                >
+            </span>
+
+            <strong>
+                📋 Serviços
+            </strong>
+        </div>
+    `;
 }
