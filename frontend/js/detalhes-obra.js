@@ -140,11 +140,14 @@ function carregarDetalhes(obraId) {
             </div>
 
             <div class="details-actions">
-                <a 
-                    class="btn-secondary"
+                <a class="btn-secondary btn-md"
                     href="obras.html">
 
-                    ← Voltar para Obras
+                    <span class="btn-icon">
+                        ←
+                    </span>
+
+                    Voltar para Obras
                 </a>
 
                 <a 

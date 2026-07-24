@@ -10,12 +10,18 @@
 }
 
 .dashboard-header h2 {
-    font-size: 24px;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #111827;
     margin-bottom: 8px;
 }
 
 .dashboard-header p {
+    font-size: 15px;
+    line-height: 1.6;
     color: #6B7280;
+    max-width: 700px;
 }
 
 .dashboard-grid {
@@ -25,39 +31,52 @@
 }
 
 .dashboard-card {
-    background: #FFFFFF;
-    padding: 24px;
-    border-radius: 12px;
-    border: 1px solid #E5E7EB;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    background:#FFFFFF;
+    border:1px solid #E5E7EB;
+    border-radius:16px;
+    padding:24px;
+
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+
+    box-shadow:0 2px 10px rgba(0,0,0,.04);
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
 }
 
-.dashboard-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+.dashboard-card:hover{
+    transform:translateY(-4px);
+
+    box-shadow:
+        0 14px 30px rgba(0,0,0,.08);
 }
 
 .dashboard-card h3 {
     color: #6B7280;
-    font-size: 14px;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .04em;
 }
 
 .dashboard-card span {
-    font-size: 32px;
+    font-size: 34px;
     font-weight: 700;
+    line-height: 1;
     color: #2563EB;
 }
 
 .progress-card,
-.activities {
-    background: #FFFFFF;
-    margin-top: 24px;
-    padding: 24px;
-    border-radius: 12px;
-    border: 1px solid #E5E7EB;
+.activities{
+    background:#FFFFFF;
+    border:1px solid #E5E7EB;
+    border-radius:16px;
+    padding:24px;
+    box-shadow:
+        0 2px 10px rgba(0,0,0,.04);
 }
 
 .progress-bar {
@@ -87,8 +106,16 @@
 }
 
 .activities li {
-    padding: 12px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 14px 0;
+
     border-bottom: 1px solid #E5E7EB;
+
+    color: #4B5563;
+    line-height: 1.5;
 }
 
 .pavimento-card {

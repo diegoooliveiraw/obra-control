@@ -56,10 +56,14 @@ function renderizarObras() {
 
             <td>
                 <a 
-                    class="btn-view"
-                    href="detalhes-obra.html?id=${obra.id}">
+                    href="detalhes-obra.html?id=${obra.id}"
+                    class="btn-view btn-sm">
 
-                    👁 Ver detalhes
+                    <span class="btn-icon">
+                        👁
+                    </span>
+
+                    Ver detalhes
                 </a>
             </td>
         `;
