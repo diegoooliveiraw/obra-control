@@ -88,6 +88,124 @@
     border-bottom: 1px solid #E5E7EB;
 }
 
+.pavimento-card {
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 14px;
+    padding: 20px;
+    margin-top: 18px;
+    box-shadow: 0 2px 10px rgba(0,0,0,.05);
+    transition: .25s;
+}
+
+.pavimento-card:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0,0,0,.08);
+}
+
+.pavimento-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 18px;
+}
+
+.pavimento-header h4 {
+    margin: 0;
+    font-size: 18px;
+    color: #111827;
+    font-weight: 600;
+}
+
+.pavimento-header .tree-badge {
+    white-space: nowrap;
+}
+
+.pavimento-progress {
+    margin-top: 18px;
+}
+
+.pavimento-progress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    font-size: 13px;
+    color: #6B7280;
+}
+
+.pavimento-progress-header strong {
+    color: #111827;
+    font-size: 16px;
+}
+
+.pavimento-progress-bar {
+    width: 100%;
+    height: 12px;
+    background: #E5E7EB;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.pavimento-progress-fill {
+    height: 100%;
+    background: #2563EB;
+    border-radius: 20px;
+    transition: width .6s ease;
+}
+
+.pavimento-indicadores {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.indicador-card {
+    background: #F9FAFB;
+    border: 1px solid #E5E7EB;
+    border-radius: 12px;
+    padding: 14px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:6px;
+    transition:.2s;
+}
+
+.indicador-card:hover {
+    transform:translateY(-3px);
+    box-shadow: 0 8px 18px rgba(0,0,0,.08);
+}
+
+.indicador-card span {
+    font-size:20px;
+}
+
+.indicador-card strong {
+    font-size:24px;
+    color:#111827;
+}
+
+.indicador-card small {
+    color:#6B7280;
+    font-size:13px;
+}
+
+.indicador-concluido {
+    border-left: 4px solid #16A34A;
+}
+
+.indicador-andamento {
+    border-left: 4px solid #F59E0B;
+}
+
+.indicador-planejamento {
+    border-left: 4px solid #9CA3AF;
+}
+
 @media (max-width: 1024px) {
     .dashboard-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -96,6 +214,18 @@
 
 @media (max-width: 600px) {
     .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media(max-width:900px){
+    .pavimento-indicadores{
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+
+@media(max-width:500px){
+    .pavimento-indicadores{
         grid-template-columns: 1fr;
     }
 }

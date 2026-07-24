@@ -84,3 +84,33 @@ function calcularIndicadoresServicos(servicos) {
 
     return indicadores;
 }
+
+function calcularIndicadoresPavimento(pavimentoId, servicos) {
+    const servicosDoPavimento =
+        servicos.filter(function (servico) {
+            return servico.pavimentoId === pavimentoId;
+        });
+
+    const indicadores = {
+        total: servicosDoPavimento.length,
+        concluidos: 0,
+        andamento: 0,
+        planejamento: 0
+    };
+
+    servicosDoPavimento.forEach(function (servico) {
+        if (servico.progresso === 100) {
+            indicadores.concluidos++;
+        }
+
+        else if (servico.progresso === 0) {
+            indicadores.planejamento++;
+        }
+
+        else {
+            indicadores.andamento++;
+        }
+    });
+
+    return indicadores;
+}

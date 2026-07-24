@@ -147,17 +147,101 @@ function renderizarArvore() {
                     progresso
                 );
 
+                const indicadores = calcularIndicadoresPavimento(
+                    pavimento.id,
+                    servicos
+                );
+
                 item.innerHTML = `
-                    🏗 ${pavimento.nome}
+                    <div class="pavimento-card">
+                        <div class="pavimento-header">
+                            <div>
+                                <h4>🏗 ${pavimento.nome}</h4>
+                            </div>
 
-                    <span class="tree-badge">
-                        ${progresso}%
-                    </span>
+                            <span class="tree-badge ${status.classe}">
+                                ${status.icone}
+                                ${status.texto}
+                            </span>
+                        </div>
 
-                    <span class="tree-badge ${status.classe}">
-                        ${status.icone}
-                        ${status.texto}
-                    </span>
+                        <div class="pavimento-progress">
+                            <div class="pavimento-progress-header">
+                                <span>
+                                    Progresso do pavimento
+                                </span>
+
+                                <strong>
+                                    ${progresso}%
+                                </strong>
+                            </div>
+
+                            <div class="pavimento-progress-bar">
+                                <div
+                                    class="pavimento-progress-fill"
+                                    style="width:${progresso}%">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pavimento-indicadores">
+                            <div class="indicador-card">
+                                <span>
+                                    📋
+                                </span>
+
+                                <strong>
+                                    ${indicadores.total}
+                                </strong>
+
+                                <small>
+                                    Serviços
+                                </small>
+                            </div>
+
+                            <div class="indicador-card indicador-concluido">
+                                <span>
+                                    🟢
+                                </span>
+
+                                <strong>
+                                    ${indicadores.concluidos}
+                                </strong>
+
+                                <small>
+                                    Concluídos
+                                </small>
+                            </div>
+
+                            <div class="indicador-card indicador-andamento">
+                                <span>
+                                    🟡
+                                </span>
+
+                                <strong>
+                                    ${indicadores.andamento}
+                                </strong>
+
+                                <small>
+                                    Em andamento
+                                </small>
+                            </div>
+
+                            <div class="indicador-card indicador-planejamento">
+                                <span>
+                                    ⚪
+                                </span>
+
+                                <strong>
+                                    ${indicadores.planejamento}
+                                </strong>
+
+                                <small>
+                                    Planejamento
+                                </small>
+                            </div>
+                        </div>
+                    </div>
                 `;
 
                 lista.appendChild(item);
