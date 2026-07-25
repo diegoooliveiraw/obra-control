@@ -7,10 +7,14 @@ const parametros =
         window.location.search
     );
 
+const obraParametro =
+    parametros.get("obraId");
+
+
 const obraSelecionada =
-    Number(
-        parametros.get("obraID")
-    );
+    obraParametro
+    ? Number(obraParametro)
+    : null;
 
 const breadcrumb = document.getElementById("breadcrumb");
 const formulario = document.getElementById("pavimento-form");
@@ -275,7 +279,27 @@ function renderizarArvore() {
 }
 
 function renderizarBreadcrumb(){
+    if(!breadcrumb){
+        return;
+    }
+
     if(!obraSelecionada){
+        breadcrumb.innerHTML = `
+            <div class="breadcrumb">
+                <a href="../index.html">
+                    📊 Dashboard
+                </a>
+
+                <span class="breadcrumb-separator">
+                    ›
+                </span>
+
+                <strong class="breadcrumb-current">
+                    🏗 Pavimentos
+                </strong>
+            </div>
+        `;
+
         return;
     }
 
@@ -292,7 +316,7 @@ function renderizarBreadcrumb(){
     breadcrumb.innerHTML = `
         <div class="breadcrumb">
             <a href="../index.html">
-                Dashboard
+                📊 Dashboard
             </a>
 
             <span class="breadcrumb-separator">
@@ -300,7 +324,7 @@ function renderizarBreadcrumb(){
             </span>
 
             <a href="obras.html">
-                Obras
+                🏢 Obras
             </a>
 
             <span class="breadcrumb-separator">

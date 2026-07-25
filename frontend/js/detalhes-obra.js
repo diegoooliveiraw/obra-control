@@ -262,6 +262,10 @@ function carregarHistorico(obraId) {
 }
 
 function renderizarBreadcrumb(obra){
+    if(!breadcrumb){
+        return;
+    }
+    
     breadcrumb.innerHTML = `
         <div class="breadcrumb">
             <a href="../index.html">

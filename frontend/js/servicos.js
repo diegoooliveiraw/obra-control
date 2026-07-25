@@ -265,25 +265,35 @@ function renderizarEstrutura() {
     });
 }
 
-function carregarBreadcrumb() {
-    const parametros =
-        new URLSearchParams(
-            window.location.search
-        );
+function carregarBreadcrumb(){
+    if(!breadcrumb){
+        return;
+    }
 
-    const obraId =
-        Number(
-            parametros.get("obraId")
-        );
+    if(!obraSelecionada){
+        breadcrumb.innerHTML = `
+            <div class="breadcrumb">
+                <a href="../index.html">
+                    📊 Dashboard
+                </a>
 
-    if(!obraId){
+                <span class="breadcrumb-separator">
+                    ›
+                </span>
+
+                <strong class="breadcrumb-current">
+                    📋 Serviços
+                </strong>
+            </div>
+        `;
+
         return;
     }
 
     const obra =
         obras.find(function(item){
 
-            return item.id === obraId;
+            return item.id === obraSelecionada;
         });
 
     if(!obra){
@@ -309,7 +319,7 @@ function carregarBreadcrumb() {
             </span>
 
             <strong>
-                🏢 ${obra.nome}
+                ${obra.nome}
             </strong>
 
             <span class="breadcrumb-separator">
