@@ -1,0 +1,99 @@
+.dashboard-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+
+    box-shadow: var(--shadow-sm);
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+}
+
+.dashboard-card:hover {
+    transform:
+        translateY(-4px);
+
+    box-shadow: var(--shadow-md);
+}
+
+.dashboard-card h3 {
+    color: var(--color-text-secondary);
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+}
+
+.dashboard-card span {
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--color-primary);
+}
+
+.progress-card,
+.activities {
+    background:var(--color-surface);
+    border:1px solid var(--color-border);
+    border-radius:var(--radius-lg);
+    padding:var(--spacing-lg);
+
+    box-shadow:var(--shadow-sm);
+}
+
+.indicador-card {
+    background:var(--color-surface-secondary);
+    border:1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    transition: .2s;
+}
+
+.indicador-card:hover {
+    transform:
+        translateY(-3px);
+
+    box-shadow: var(--shadow-md);
+}
+
+.indicador-card span {
+    font-size: 20px;
+}
+
+.indicador-card strong {
+    font-size: 24px;
+    color:var(--color-text-primary);
+}
+
+.indicador-card small {
+    color:var(--color-text-secondary);
+    font-size: 13px;
+}
+
+.indicador-concluido {
+    border-left: 4px solid var(--color-success);
+}
+
+.indicador-andamento {
+    border-left: 4px solid var(--color-warning);
+}
+
+.indicador-planejamento {
+    border-left: 4px solid var(--color-neutral);
+}
+
+.form-card,
+.table-card {
+    box-sizing: border-box;
+}
