@@ -18,9 +18,7 @@
 
 <body>
     <div class="container">
-        <aside 
-            class="sidebar"
-            id="sidebar">
+        <aside class="sidebar" id="sidebar">
         </aside>
 
         <main class="main-content">
@@ -28,7 +26,7 @@
 
             <section class="dashboard">
                 <div id="breadcrumb"></div>
-                
+
                 <div class="form-card">
                     <form id="servico-form">
                         <div class="form-group">
@@ -56,13 +54,7 @@
                         <div class="form-group">
                             <label for="progresso">Progresso (%)</label>
 
-                            <input
-                                type="number"
-                                id="progresso"
-                                min="0"
-                                max="100"
-                                value="0"
-                                required>
+                            <input type="number" id="progresso" min="0" max="100" value="0" required>
                         </div>
 
                         <button class="btn-primary btn-md">
@@ -84,10 +76,15 @@
         </main>
     </div>
 
+    <!-- Componentes globais -->
     <script src="../js/components/sidebar.js"></script>
     <script src="../js/components/layout.js"></script>
     <script src="../js/components/header.js"></script>
+
+    <!-- Utilitários -->
     <script src="../js/utils.js"></script>
+
+    <!-- Script da página -->
     <script src="../js/servicos.js"></script>
 </body>
 

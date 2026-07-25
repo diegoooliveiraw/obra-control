@@ -18,6 +18,9 @@ function inicializar() {
 }
 
 function atualizarIndicadores() {
+    if (!totalObras) {
+        return;
+    }
 
     totalObras.textContent = obras.length;
 

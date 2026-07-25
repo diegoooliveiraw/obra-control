@@ -1,63 +1,61 @@
 .dashboard {
-    padding: 32px;
-    display:flex;
-    flex-direction:column;
-    gap:24px;
+    padding: var(--spacing-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
 }
 
 .dashboard-header {
-    margin-bottom: 24px;
+    margin-bottom: var(--spacing-lg);
 }
 
 .dashboard-header h2 {
     font-size: 28px;
     font-weight: 700;
     line-height: 1.2;
-    color: #111827;
+    color: var(--color-text-primary);
     margin-bottom: 8px;
 }
 
 .dashboard-header p {
     font-size: 15px;
     line-height: 1.6;
-    color: #6B7280;
+    color: var(--color-text-secondary);
     max-width: 700px;
 }
 
 .dashboard-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    gap: var(--spacing-lg);
 }
 
 .dashboard-card {
-    background:#FFFFFF;
-    border:1px solid #E5E7EB;
-    border-radius:16px;
-    padding:24px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
 
-    display:flex;
-    flex-direction:column;
-    gap:12px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
 
-    box-shadow:
-        0 2px 8px rgba(15,23,42,.04);
+    box-shadow: var(--shadow-sm);
 
     transition:
         transform .25s ease,
         box-shadow .25s ease;
 }
 
-.dashboard-card:hover{
+.dashboard-card:hover {
     transform:
         translateY(-4px);
 
-    box-shadow:
-        0 14px 30px rgba(15,23,42,.08);
+    box-shadow: var(--shadow-md);
 }
 
 .dashboard-card h3 {
-    color: #6B7280;
+    color: var(--color-text-secondary);
     font-size: 13px;
     font-weight: 600;
     text-transform: uppercase;
@@ -68,34 +66,33 @@
     font-size: 34px;
     font-weight: 700;
     line-height: 1;
-    color: #2563EB;
+    color: var(--color-primary);
 }
 
 .progress-card,
-.activities{
-    background:#FFFFFF;
-    border:1px solid #E5E7EB;
-    border-radius:16px;
-    padding:24px;
+.activities {
+    background:var(--color-surface);
+    border:1px solid var(--color-border);
+    border-radius:var(--radius-lg);
+    padding:var(--spacing-lg);
 
-    box-shadow:
-        0 2px 8px rgba(15,23,42,.04);
+    box-shadow:var(--shadow-sm);
 }
 
 .progress-bar {
     width: 100%;
     height: 24px;
-    background: #E5E7EB;
+    background:var(--color-border);
     border-radius: 20px;
-    margin-top: 16px;
+    margin-top: var(--spacing-md);
     overflow: hidden;
 }
 
 .progress-fill {
     width: 0%;
     height: 100%;
-    background: #2563EB;
-    color: #FFFFFF;
+    background:var(--color-primary);
+    color:var(--color-surface);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -104,7 +101,7 @@
 }
 
 .activities ul {
-    margin-top: 16px;
+    margin-top: var(--spacing-md);
     list-style: none;
 }
 
@@ -115,37 +112,34 @@
 
     padding: 14px 0;
 
-    border-bottom: 1px solid #E5E7EB;
+    border-bottom:1px solid var(--color-border);
 
-    color: #4B5563;
+    color: var(--color-text-secondary);
     line-height: 1.5;
 }
 
 .pavimento-card {
-    background: #FFFFFF;
-    border: 1px solid #E5E7EB;
-    border-radius: 14px;
-    padding: 20px;
-    margin-top: 18px;
-
-    box-shadow:
-        0 2px 8px rgba(15,23,42,.04);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    margin-top: var(--spacing-md);
+    box-shadow: var(--shadow-sm);
     transition: .25s;
 }
 
-.pavimento-card:hover{
+.pavimento-card:hover {
     transform:
         translateY(-3px);
 
-    box-shadow:
-        0 10px 25px rgba(15,23,42,.08);
+    box-shadow: var(--shadow-md);
 }
 
 .pavimento-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap:wrap;
+    flex-wrap: wrap;
     gap: 16px;
     margin-bottom: 18px;
 }
@@ -153,7 +147,7 @@
 .pavimento-header h4 {
     margin: 0;
     font-size: 18px;
-    color: #111827;
+    color:var(--color-text-primary);
     font-weight: 600;
 }
 
@@ -171,25 +165,25 @@
     align-items: center;
     margin-bottom: 8px;
     font-size: 13px;
-    color: #6B7280;
+    color:var(--color-text-secondary);
 }
 
 .pavimento-progress-header strong {
-    color: #111827;
+    color:var(--color-text-primary);
     font-size: 16px;
 }
 
 .pavimento-progress-bar {
     width: 100%;
     height: 12px;
-    background: #E5E7EB;
+    background:var(--color-border);
     border-radius: 20px;
     overflow: hidden;
 }
 
 .pavimento-progress-fill {
     height: 100%;
-    background: #2563EB;
+    background:var(--color-primary);
     border-radius: 20px;
     transition: width .6s ease;
 }
@@ -202,77 +196,77 @@
 }
 
 .indicador-card {
-    background: #F9FAFB;
-    border: 1px solid #E5E7EB;
+    background:var(--color-surface-secondary);
+    border:1px solid var(--color-border);
     border-radius: 12px;
     padding: 14px;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    gap:6px;
-    transition:.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    transition: .2s;
 }
 
 .indicador-card:hover {
     transform:
         translateY(-3px);
 
-    box-shadow:
-        0 8px 18px rgba(15,23,42,.08);
+    box-shadow: var(--shadow-md);
 }
 
 .indicador-card span {
-    font-size:20px;
+    font-size: 20px;
 }
 
 .indicador-card strong {
-    font-size:24px;
-    color:#111827;
+    font-size: 24px;
+    color:var(--color-text-primary);
 }
 
 .indicador-card small {
-    color:#6B7280;
-    font-size:13px;
+    color:var(--color-text-secondary);
+    font-size: 13px;
 }
 
 .indicador-concluido {
-    border-left: 4px solid #16A34A;
+    border-left: 4px solid var(--color-success);
 }
 
 .indicador-andamento {
-    border-left: 4px solid #F59E0B;
+    border-left: 4px solid var(--color-warning);
 }
 
 .indicador-planejamento {
-    border-left: 4px solid #9CA3AF;
+    border-left: 4px solid var(--color-neutral);
 }
 
 .breadcrumb {
-    display:flex;
-    align-items:center;
-    gap:10px;
-    margin-bottom:24px;
-    font-size:14px;
-    color:#6B7280;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 24px;
+    font-size: 14px;
+    color:var(--color-text-secondary);
 }
 
 .breadcrumb a {
-    text-decoration:none;
-    color:#2563EB;
+    text-decoration: none;
+    color:var(--color-primary);
 }
 
 .breadcrumb strong {
-    color:#111827;
-    font-weight:600;
+    color:var(--color-text-primary);
+    font-weight: 600;
 }
 
 .breadcrumb span {
-    color:#9CA3AF;
+    color: var(--color-neutral);
 }
 
-.form-card, .table-card {
-    box-sizing:border-box;
+.form-card,
+.table-card {
+    box-sizing: border-box;
 }
 
 @media (max-width: 1024px) {
@@ -287,21 +281,21 @@
     }
 }
 
-@media(max-width:900px){
-    .pavimento-indicadores{
-        grid-template-columns: repeat(2,1fr);
+@media(max-width:900px) {
+    .pavimento-indicadores {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
-@media(max-width:500px){
-    .pavimento-indicadores{
+@media(max-width:500px) {
+    .pavimento-indicadores {
         grid-template-columns: 1fr;
     }
 }
 
-@media(max-width:768px){
+@media(max-width:768px) {
     .dashboard {
-        padding:16px;
-        gap:16px;
+        padding: 16px;
+        gap: 16px;
     }
 }

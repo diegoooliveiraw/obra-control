@@ -1,4 +1,4 @@
-function inicializarLayout() {
+function inicializarComponentes() {
 
     carregarSidebar();
 
@@ -7,5 +7,5 @@ function inicializarLayout() {
 
 document.addEventListener(
     "DOMContentLoaded",
-    inicializarLayout
+    inicializarComponentes
 );
