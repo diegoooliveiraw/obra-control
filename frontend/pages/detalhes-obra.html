@@ -16,60 +16,13 @@
 
 <body>
     <div class="container">
-        <aside class="sidebar">
-            <div class="logo">
-                <h2>🏗 Obra Control</h2>
-            </div>
-
-            <nav class="menu">
-                <a href="../index.html">
-                    <span class="menu-icon">📊</span>
-
-                    <span class="menu-text">Dashboard</span>
-                </a>
-
-                <a href="obras.html">
-                    <span class="menu-icon">🏢</span>
-
-                    <span class="menu-text">Obras</span>
-                </a>
-
-                <a href="pavimentos.html">
-                    <span class="menu-icon">🏗</span>
-
-                    <span class="menu-text">Pavimentos</span>
-                </a>
-
-                <a href="servicos.html">
-                    <span class="menu-icon">📋</span>
-
-                    <span class="menu-text">Serviços</span>                    
-                </a>
-
-                <a href="#">
-                    <span class="menu-icon">📈</span>
-
-                    <span class="menu-text">Relatórios</span>
-                </a>
-
-                <a href="#">
-                    <span class="menu-icon">⚙️</span>
-
-                    <span class="menu-text">Configurações</span>  
-                </a>
-            </nav>
+        <aside 
+            class="sidebar"
+            id="sidebar">
         </aside>
 
         <main class="main-content">
-            <header class="header">
-                <h1>
-                    Detalhes da Obra
-                </h1>
-
-                <div class="user-area">
-                    Diego Oliveira
-                </div>
-            </header>
+            <div id="header-container"></div>
 
             <section class="dashboard">
                 <div id="breadcrumb"></div>
@@ -79,6 +32,9 @@
         </main>
     </div>
 
+    <script src="../js/components/sidebar.js"></script>
+    <script src="../js/components/layout.js"></script>
+    <script src="../js/components/header.js"></script>
     <script src="../js/utils.js"></script>
     <script src="../js/historico.js"></script>
     <script src="../js/detalhes-obra.js"></script>
