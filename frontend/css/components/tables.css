@@ -157,40 +157,6 @@ td {
     color: #166534;
 }
 
-/*
-====================================
-BOTÃO VISUALIZAÇÃO
-====================================
-*/
-
-.btn-view {
-    background:#2563EB;
-    color:#FFFFFF;
-    border-color:#2563EB;
-}
-
-.btn-view:hover {
-    background:#1D4ED8;
-    border-color:#1D4ED8;
-
-    box-shadow:
-        0 8px 18px rgba(37,99,235,.25);
-
-    transform:
-        translateY(-1px);
-}
-
-.btn-view:active {
-    transform:
-        scale(.98);
-}
-
-.btn-view:disabled {
-    background:#93C5FD;
-    border-color:#93C5FD;
-    cursor:not-allowed;
-}
-
 @media(max-width:600px){
     .tree-list{
         padding-left:10px;

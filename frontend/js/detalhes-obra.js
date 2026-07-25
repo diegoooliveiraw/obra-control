@@ -69,8 +69,6 @@ function carregarDetalhes(obraId) {
         }).length;
 
     container.innerHTML = `
-        
-
         <div class="details-card">
             <h2>
                 🏢 ${obra.nome}
@@ -261,11 +259,11 @@ function carregarHistorico(obraId) {
     area.innerHTML = html;
 }
 
-function renderizarBreadcrumb(obra){
-    if(!breadcrumb){
+function renderizarBreadcrumb(obra) {
+    if (!breadcrumb) {
         return;
     }
-    
+
     breadcrumb.innerHTML = `
         <div class="breadcrumb">
             <a href="../index.html">
