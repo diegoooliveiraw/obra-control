@@ -57,7 +57,9 @@ function calcularProgressoObra(obraId, pavimentos, servicos) {
         );
     });
 
-    return Math.round(soma / pavimentosDaObra.length);
+    return Math.round(
+        soma / pavimentosDaObra.length
+    );
 }
 
 function calcularIndicadoresServicos(servicos) {

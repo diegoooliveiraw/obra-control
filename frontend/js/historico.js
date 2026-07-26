@@ -1,7 +1,7 @@
-let historico = JSON.parse(localStorage.getItem("historico")) || [];
+let historico = getHistorico();
 
 function salvarHistorico() {
-    localStorage.setItem("historico", JSON.stringify(historico));
+    saveHistorico(historico);
 }
 
 function buscarHistoricoPorObra(obraId) {

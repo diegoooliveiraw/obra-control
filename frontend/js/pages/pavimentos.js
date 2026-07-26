@@ -1,6 +1,6 @@
-let obras = JSON.parse(localStorage.getItem("obras")) || [];
-let pavimentos = JSON.parse(localStorage.getItem("pavimentos")) || [];
-let servicos = JSON.parse(localStorage.getItem("servicos")) || [];
+let obras = getObras();
+let pavimentos = getPavimentos();
+let servicos = getServicos();
 
 const parametros =
     new URLSearchParams(
@@ -80,7 +80,7 @@ function cadastrarPavimento() {
 }
 
 function salvarPavimentos() {
-    localStorage.setItem("pavimentos", JSON.stringify(pavimentos));
+    savePavimentos(pavimentos);
 }
 
 function renderizarArvore() {

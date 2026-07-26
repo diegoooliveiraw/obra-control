@@ -1,6 +1,6 @@
-const obras = JSON.parse(localStorage.getItem("obras")) || [];
-const pavimentos = JSON.parse(localStorage.getItem("pavimentos")) || [];
-const servicos = JSON.parse(localStorage.getItem("servicos")) || [];
+const obras = getObras();
+const pavimentos = getPavimentos();
+const servicos = getServicos();
 
 const totalObras = document.getElementById("total-obras");
 const totalPavimentos = document.getElementById("total-pavimentos");

@@ -1,4 +1,4 @@
-let obras = JSON.parse(localStorage.getItem("obras")) || [];
+let obras = getObras();
 
 const breadcrumb = document.getElementById("breadcrumb");
 const formulario = document.getElementById("obra-form");
@@ -67,10 +67,7 @@ function cadastrarObra() {
 }
 
 function salvarObras() {
-    localStorage.setItem(
-        "obras",
-        JSON.stringify(obras)
-    );
+    saveObras(obras);
 }
 
 function renderizarObras() {
