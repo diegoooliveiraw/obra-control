@@ -13,8 +13,8 @@ const obraParametro =
 
 const obraSelecionada =
     obraParametro
-    ? Number(obraParametro)
-    : null;
+        ? Number(obraParametro)
+        : null;
 
 const breadcrumb = document.getElementById("breadcrumb");
 const formulario = document.getElementById("pavimento-form");
@@ -89,11 +89,11 @@ function renderizarArvore() {
 
     const obrasExibidas =
         obraSelecionada
-        ? obras.filter(function(obra){
+            ? obras.filter(function (obra) {
 
-            return obra.id === obraSelecionada;
-        })
-        : obras;
+                return obra.id === obraSelecionada;
+            })
+            : obras;
 
     obrasExibidas.forEach(function (obra) {
 
@@ -102,7 +102,7 @@ function renderizarArvore() {
         });
 
         const quantidade = pavimentosDaObra.length;
-        
+
         const progresso = calcularProgressoObra(
             obra.id,
             pavimentos,
@@ -278,12 +278,12 @@ function renderizarArvore() {
     });
 }
 
-function renderizarBreadcrumb(){
-    if(!breadcrumb){
+function renderizarBreadcrumb() {
+    if (!breadcrumb) {
         return;
     }
 
-    if(!obraSelecionada){
+    if (!obraSelecionada) {
         breadcrumb.innerHTML = `
             <div class="breadcrumb">
                 <a href="../index.html">
@@ -304,12 +304,12 @@ function renderizarBreadcrumb(){
     }
 
     const obra =
-        obras.find(function(item){
+        obras.find(function (item) {
 
             return item.id === obraSelecionada;
         });
 
-    if(!obra){
+    if (!obra) {
         return;
     }
 

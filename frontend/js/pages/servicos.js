@@ -25,12 +25,12 @@ function inicializar() {
     carregarObras();
     renderizarEstrutura();
 
-    selectObra.addEventListener("change",carregarPavimentos);
+    selectObra.addEventListener("change", carregarPavimentos);
 
     formulario.addEventListener("submit", function (event) {
-            event.preventDefault();
-            cadastrarServico();
-        }
+        event.preventDefault();
+        cadastrarServico();
+    }
     );
 }
 
@@ -102,7 +102,7 @@ function cadastrarServico() {
     servicos.push(servico);
 
     salvarServicos();
-    
+
     renderizarEstrutura();
 
     formulario.reset();
@@ -124,11 +124,11 @@ function renderizarEstrutura() {
 
     const obrasExibidas =
         obraSelecionada
-        ? obras.filter(function (obra) {
+            ? obras.filter(function (obra) {
 
-            return obra.id === obraSelecionada;
-        })
-        : obras;
+                return obra.id === obraSelecionada;
+            })
+            : obras;
 
     obrasExibidas.forEach(function (obra) {
 
@@ -265,12 +265,12 @@ function renderizarEstrutura() {
     });
 }
 
-function carregarBreadcrumb(){
-    if(!breadcrumb){
+function carregarBreadcrumb() {
+    if (!breadcrumb) {
         return;
     }
 
-    if(!obraSelecionada){
+    if (!obraSelecionada) {
         breadcrumb.innerHTML = `
             <div class="breadcrumb">
                 <a href="../index.html">
@@ -291,12 +291,12 @@ function carregarBreadcrumb(){
     }
 
     const obra =
-        obras.find(function(item){
+        obras.find(function (item) {
 
             return item.id === obraSelecionada;
         });
 
-    if(!obra){
+    if (!obra) {
         return;
     }
 
