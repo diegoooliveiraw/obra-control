@@ -1,12 +1,12 @@
 let obras = JSON.parse(localStorage.getItem("obras")) || [];
 
-const breadcrumb =document.getElementById("breadcrumb");
+const breadcrumb = document.getElementById("breadcrumb");
 const formulario = document.getElementById("obra-form");
 const tabelaObras = document.getElementById("tabela-obras");
 
 inicializar();
 
-function inicializar(){
+function inicializar() {
     renderizarBreadcrumb();
 
     renderizarObras();
@@ -18,8 +18,8 @@ function inicializar(){
     });
 }
 
-function renderizarBreadcrumb(){
-    if(!breadcrumb){
+function renderizarBreadcrumb() {
+    if (!breadcrumb) {
         return;
     }
 
@@ -40,7 +40,7 @@ function renderizarBreadcrumb(){
     `;
 }
 
-function cadastrarObra(){
+function cadastrarObra() {
     const obra = {
         id: Date.now(),
 
@@ -66,14 +66,14 @@ function cadastrarObra(){
     formulario.reset();
 }
 
-function salvarObras(){
+function salvarObras() {
     localStorage.setItem(
         "obras",
         JSON.stringify(obras)
     );
 }
 
-function renderizarObras(){
+function renderizarObras() {
     tabelaObras.innerHTML = "";
 
     obras.forEach(function (obra) {
