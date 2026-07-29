@@ -1,7 +1,3 @@
-let obras = getObras();
-let pavimentos = getPavimentos();
-let servicos = getServicos();
-
 const parametros =
     new URLSearchParams(
         window.location.search
@@ -35,6 +31,8 @@ function inicializar() {
 }
 
 function carregarObras() {
+    const obras = obrasService.listar();
+
     selectObra.innerHTML = "";
 
     if (obras.length === 0) {
@@ -70,20 +68,17 @@ function cadastrarPavimento() {
         descricao: document.getElementById("descricao").value.trim()
     };
 
-    pavimentos.push(pavimento);
-
-    salvarPavimentos();
+    pavimentosService.criar(pavimento);
 
     renderizarArvore();
 
     formulario.reset();
 }
 
-function salvarPavimentos() {
-    savePavimentos(pavimentos);
-}
-
 function renderizarArvore() {
+    const obras = obrasService.listar();
+    const pavimentos = pavimentosService.listar();
+    const servicos = servicosService.listar();
 
     listaObras.innerHTML = "";
 
@@ -279,6 +274,8 @@ function renderizarArvore() {
 }
 
 function renderizarBreadcrumb() {
+    const obras = obrasService.listar();
+    
     if (!breadcrumb) {
         return;
     }

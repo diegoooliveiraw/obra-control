@@ -1,16 +1,16 @@
-let obras = getObras();
-let pavimentos = getPavimentos();
-let servicos = getServicos();
-
 const parametros =
     new URLSearchParams(
         window.location.search
     );
 
+const obraParametro =
+    parametros.get("obraId");
+
+
 const obraSelecionada =
-    Number(
-        parametros.get("obraId")
-    );
+    obraParametro
+        ? Number(obraParametro)
+        : null;
 
 const breadcrumb = document.getElementById("breadcrumb");
 const formulario = document.getElementById("servico-form");
@@ -35,6 +35,8 @@ function inicializar() {
 }
 
 function carregarObras() {
+    const obras = obrasService.listar();
+
     selectObra.innerHTML = "";
 
     if (obras.length === 0) {
@@ -57,6 +59,8 @@ function carregarObras() {
 }
 
 function carregarPavimentos() {
+    const pavimentos = pavimentosService.listar();
+
     selectPavimento.innerHTML = "";
 
     const option = document.createElement("option");
@@ -99,9 +103,7 @@ function cadastrarServico() {
         )
     };
 
-    servicos.push(servico);
-
-    salvarServicos();
+    servicosService.criar(servico);
 
     renderizarEstrutura();
 
@@ -115,11 +117,11 @@ function cadastrarServico() {
     alert("Serviço cadastrado com sucesso!");
 }
 
-function salvarServicos() {
-    saveServicos(servicos);
-}
-
 function renderizarEstrutura() {
+    const obras = obrasService.listar();
+    const pavimentos = pavimentosService.listar();
+    const servicos = servicosService.listar();
+
     estruturaServicos.innerHTML = "";
 
     const obrasExibidas =
@@ -266,6 +268,8 @@ function renderizarEstrutura() {
 }
 
 function carregarBreadcrumb() {
+    const obras = obrasService.listar();
+
     if (!breadcrumb) {
         return;
     }

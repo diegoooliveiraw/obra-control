@@ -1,5 +1,3 @@
-let obras = getObras();
-
 const breadcrumb = document.getElementById("breadcrumb");
 const formulario = document.getElementById("obra-form");
 const tabelaObras = document.getElementById("tabela-obras");
@@ -57,21 +55,17 @@ function cadastrarObra() {
         status: document.getElementById("status").value
     };
 
-    obras.push(obra);
-
-    salvarObras();
+    obrasService.criar(obra);
 
     renderizarObras();
 
     formulario.reset();
 }
 
-function salvarObras() {
-    saveObras(obras);
-}
-
 function renderizarObras() {
     tabelaObras.innerHTML = "";
+
+    const obras = obrasService.listar();
 
     obras.forEach(function (obra) {
         const linha =
