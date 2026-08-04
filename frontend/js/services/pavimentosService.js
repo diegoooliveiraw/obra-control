@@ -1,36 +1,34 @@
 const pavimentosService = {
 
     listar() {
-        return getPavimentos();
+        return pavimentoRepository.listar();
     },
 
     buscarPorId(id) {
-        return getPavimentos().find(function (pavimento) {
-            return pavimento.id === id;
-        });
+        return pavimentoRepository.buscarPorId(id);
     },
 
     criar(pavimento) {
-        const pavimentos = getPavimentos();
+        const pavimentos = pavimentoRepository.listar();
 
         pavimentos.push(pavimento);
 
-        savePavimentos(pavimentos);
+        pavimentoRepository.salvar(pavimentos);
 
         return pavimento;
     },
 
     atualizar(pavimentos) {
-        savePavimentos(pavimentos);
+        pavimentoRepository.salvar(pavimentos);
     },
 
     remover(id) {
-        const pavimentos = getPavimentos();
+        const pavimentos = pavimentoRepository.listar();
 
         const novosPavimentos = pavimentos.filter(function (pavimento) {
             return pavimento.id !== id;
         });
 
-        savePavimentos(novosPavimentos);
+        pavimentoRepository.salvar(novosPavimentos);
     }
 };

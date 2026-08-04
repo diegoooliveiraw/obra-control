@@ -1,36 +1,42 @@
 const obrasService = {
 
     listar() {
-        return getObras();
+        return obraRepository.listar();
     },
 
     criar(obra) {
-        const obras = getObras();
+        const obras =
+            obraRepository.listar();
 
         obras.push(obra);
 
-        saveObras(obras);
+        obraRepository.salvar(obras);
 
         return obra;
     },
 
     buscarPorId(id) {
-        return getObras().find(function (obra) {
-            return obra.id === id;
-        });
+        return obraRepository
+            .listar()
+            .find(function (obra) {
+
+                return obra.id === id;
+            });
     },
 
     atualizar(obras) {
-        saveObras(obras);
+        obraRepository.salvar(obras);
     },
 
     remover(id) {
-        const obras = getObras();
+        const obras =
+            obraRepository.listar();
 
-        const novasObras = obras.filter(function (obra) {
-            return obra.id !== id;
-        });
+        const novasObras =
+            obras.filter(function (obra) {
+                return obra.id !== id;
+            });
 
-        saveObras(novasObras);
+        obraRepository.salvar(novasObras);
     }
 };
