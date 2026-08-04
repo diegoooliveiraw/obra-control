@@ -22,5 +22,15 @@ const obrasService = {
 
     atualizar(obras) {
         saveObras(obras);
+    },
+
+    remover(id) {
+        const obras = getObras();
+
+        const novasObras = obras.filter(function (obra) {
+            return obra.id !== id;
+        });
+
+        saveObras(novasObras);
     }
 };
