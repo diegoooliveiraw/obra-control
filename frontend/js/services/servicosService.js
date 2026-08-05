@@ -1,34 +1,36 @@
 const servicosService = {
 
-    listar() {
-        return servicoRepository.listar();
+    async listar() {
+        return await servicoRepository.listar();
     },
 
-    buscarPorId(id) {
-        return servicoRepository.buscarPorId(id);
+    async buscarPorId(id) {
+        return await servicoRepository.buscarPorId(id);
     },
 
-    criar(servico) {
-        const servicos = servicoRepository.listar();
+    async criar(servico) {
+        const servicos = 
+            await servicoRepository.listar();
 
         servicos.push(servico);
 
-        servicoRepository.salvar(servicos);
+        await servicoRepository.salvar(servicos);
 
         return servico;
     },
 
-    atualizar(servicos) {
-        servicoRepository.salvar(servicos);
+    async atualizar(servicos) {
+        await servicoRepository.salvar(servicos);
     },
 
-    remover(id) {
-        const servicos = servicoRepository.listar();
+    async remover(id) {
+        const servicos = 
+            await servicoRepository.listar();
 
         const novosServicos = servicos.filter(function (servico) {
             return servico.id !== id;
         });
 
-        servicoRepository.salvar(novosServicos);
+        await servicoRepository.salvar(novosServicos);
     }
 };

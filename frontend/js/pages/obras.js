@@ -4,15 +4,15 @@ const tabelaObras = document.getElementById("tabela-obras");
 
 inicializar();
 
-function inicializar() {
+async function inicializar() {
     renderizarBreadcrumb();
 
-    renderizarObras();
+    await renderizarObras();
 
-    formulario.addEventListener("submit", function (event) {
+    formulario.addEventListener("submit", async function (event) {
         event.preventDefault();
 
-        cadastrarObra();
+        await cadastrarObra();
     });
 }
 
@@ -38,7 +38,7 @@ function renderizarBreadcrumb() {
     `;
 }
 
-function cadastrarObra() {
+async function cadastrarObra() {
     const obra = {
         id: Date.now(),
 
@@ -55,17 +55,17 @@ function cadastrarObra() {
         status: document.getElementById("status").value
     };
 
-    obrasService.criar(obra);
+    await obrasService.criar(obra);
 
-    renderizarObras();
+    await renderizarObras();
 
     formulario.reset();
 }
 
-function renderizarObras() {
+async function renderizarObras() {
     tabelaObras.innerHTML = "";
 
-    const obras = obrasService.listar();
+    const obras = await obrasService.listar();
 
     obras.forEach(function (obra) {
         const linha =

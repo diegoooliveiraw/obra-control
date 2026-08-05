@@ -19,19 +19,19 @@ const listaObras = document.getElementById("lista-obras");
 
 inicializar();
 
-function inicializar() {
-    carregarObras();
-    renderizarBreadcrumb();
-    renderizarArvore();
+async function inicializar() {
+    await carregarObras();
+    await renderizarBreadcrumb();
+    await renderizarArvore();
 
-    formulario.addEventListener("submit", function (event) {
+    formulario.addEventListener("submit", async function (event) {
         event.preventDefault();
-        cadastrarPavimento();
+        await cadastrarPavimento();
     });
 }
 
-function carregarObras() {
-    const obras = obrasService.listar();
+async function carregarObras() {
+    const obras = await obrasService.listar();
 
     selectObra.innerHTML = "";
 
@@ -54,7 +54,7 @@ function carregarObras() {
     });
 }
 
-function cadastrarPavimento() {
+async function cadastrarPavimento() {
 
     if (!selectObra.value || !document.getElementById("nome").value.trim()) {
         alert("Selecione uma obra e informe o nome do pavimento.");
@@ -68,17 +68,22 @@ function cadastrarPavimento() {
         descricao: document.getElementById("descricao").value.trim()
     };
 
-    pavimentosService.criar(pavimento);
+    await pavimentosService.criar(pavimento);
 
-    renderizarArvore();
+    await renderizarArvore();
 
     formulario.reset();
 }
 
-function renderizarArvore() {
-    const obras = obrasService.listar();
-    const pavimentos = pavimentosService.listar();
-    const servicos = servicosService.listar();
+async function renderizarArvore() {
+    const obras =
+        await obrasService.listar();
+
+    const pavimentos =
+        await pavimentosService.listar();
+
+    const servicos =
+        await servicosService.listar();
 
     listaObras.innerHTML = "";
 
@@ -273,8 +278,8 @@ function renderizarArvore() {
     });
 }
 
-function renderizarBreadcrumb() {
-    const obras = obrasService.listar();
+async function renderizarBreadcrumb() {
+    const obras = await obrasService.listar();
     
     if (!breadcrumb) {
         return;

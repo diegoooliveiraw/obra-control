@@ -1,34 +1,36 @@
 const pavimentosService = {
 
-    listar() {
-        return pavimentoRepository.listar();
+    async listar() {
+        return await pavimentoRepository.listar();
     },
 
-    buscarPorId(id) {
-        return pavimentoRepository.buscarPorId(id);
+    async buscarPorId(id) {
+        return await pavimentoRepository.buscarPorId(id);
     },
 
-    criar(pavimento) {
-        const pavimentos = pavimentoRepository.listar();
+    async criar(pavimento) {
+        const pavimentos =
+            await pavimentoRepository.listar();
 
         pavimentos.push(pavimento);
 
-        pavimentoRepository.salvar(pavimentos);
+        await pavimentoRepository.salvar(pavimentos);
 
         return pavimento;
     },
 
-    atualizar(pavimentos) {
-        pavimentoRepository.salvar(pavimentos);
+    async atualizar(pavimentos) {
+        await pavimentoRepository.salvar(pavimentos);
     },
 
-    remover(id) {
-        const pavimentos = pavimentoRepository.listar();
+    async remover(id) {
+        const pavimentos =
+            await pavimentoRepository.listar();
 
         const novosPavimentos = pavimentos.filter(function (pavimento) {
             return pavimento.id !== id;
         });
 
-        pavimentoRepository.salvar(novosPavimentos);
+        await pavimentoRepository.salvar(novosPavimentos);
     }
 };

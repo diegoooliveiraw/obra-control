@@ -20,22 +20,24 @@ const estruturaServicos = document.getElementById("estrutura-servicos");
 
 inicializar();
 
-function inicializar() {
-    carregarBreadcrumb();
-    carregarObras();
-    renderizarEstrutura();
+async function inicializar() {
+    await carregarBreadcrumb();
+
+    await carregarObras();
+
+    await renderizarEstrutura();
 
     selectObra.addEventListener("change", carregarPavimentos);
 
-    formulario.addEventListener("submit", function (event) {
+    formulario.addEventListener("submit", async function (event) {
         event.preventDefault();
-        cadastrarServico();
+        await cadastrarServico();
     }
     );
 }
 
-function carregarObras() {
-    const obras = obrasService.listar();
+async function carregarObras() {
+    const obras = await obrasService.listar();
 
     selectObra.innerHTML = "";
 
@@ -58,8 +60,8 @@ function carregarObras() {
     });
 }
 
-function carregarPavimentos() {
-    const pavimentos = pavimentosService.listar();
+async function carregarPavimentos() {
+    const pavimentos = await pavimentosService.listar();
 
     selectPavimento.innerHTML = "";
 
@@ -82,7 +84,7 @@ function carregarPavimentos() {
     });
 }
 
-function cadastrarServico() {
+async function cadastrarServico() {
 
     if (
         !selectObra.value ||
@@ -103,9 +105,9 @@ function cadastrarServico() {
         )
     };
 
-    servicosService.criar(servico);
+    await servicosService.criar(servico);
 
-    renderizarEstrutura();
+    await renderizarEstrutura();
 
     formulario.reset();
 
@@ -117,10 +119,15 @@ function cadastrarServico() {
     alert("Serviço cadastrado com sucesso!");
 }
 
-function renderizarEstrutura() {
-    const obras = obrasService.listar();
-    const pavimentos = pavimentosService.listar();
-    const servicos = servicosService.listar();
+async function renderizarEstrutura() {
+    const obras =
+        await obrasService.listar();
+
+    const pavimentos =
+        await pavimentosService.listar();
+
+    const servicos =
+        await servicosService.listar();
 
     estruturaServicos.innerHTML = "";
 
@@ -267,8 +274,8 @@ function renderizarEstrutura() {
     });
 }
 
-function carregarBreadcrumb() {
-    const obras = obrasService.listar();
+async function carregarBreadcrumb() {
+    const obras = await obrasService.listar();
 
     if (!breadcrumb) {
         return;
