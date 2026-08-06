@@ -3,13 +3,13 @@ const obraRepository = {
     listar() {
         // Futuro:
         // return api.get("/obras");
-        return getObras();
+        return apiAdapter.listarObras();
     },
 
     salvar(obras) {
         // Futuro:
         // return api.post("/obras", obras);
-        saveObras(obras);
+        apiAdapter.salvarObras(obras);
     },
 
     buscarPorId(id) {
